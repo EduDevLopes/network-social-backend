@@ -1,5 +1,6 @@
 package com.pieropan.networksocial.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +28,7 @@ public class Users implements UserDetails {
     private String login;
     private String password;
 
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "id_post")
     private List<Post> posts;

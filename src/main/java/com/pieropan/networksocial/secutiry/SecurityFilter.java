@@ -35,6 +35,7 @@ public class SecurityFilter extends OncePerRequestFilter {
             var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+        response.setHeader("Access-Control-Allow-Origin", "*");
         filterChain.doFilter(request, response);
     }
 }

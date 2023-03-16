@@ -20,7 +20,7 @@ public class Users {
     @Column(name = "id_user")
     private Long id;
     private String name;
-    private String email;
+    private String login;
     private String password;
 
     @OneToMany

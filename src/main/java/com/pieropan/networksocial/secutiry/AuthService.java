@@ -1,20 +1,24 @@
 package com.pieropan.networksocial.secutiry;
 
-import com.pieropan.networksocial.repository.UsersRepository;
+import com.pieropan.networksocial.domain.Users;
+import com.pieropan.networksocial.dto.UsersDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthService implements UserDetailsService {
+public class AuthService {
 
     @Autowired
-    UsersRepository repostirory;
+    AuthenticationManager manager;
 
-    @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        return repostirory.findByLogin(login);
+    @Autowired
+    TokenService tokenService;
+
+    public String login(UsersDto user) {
+        var token = new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword());
+        var authenticatiomanager = manager.authenticate(token);
+        return tokenService.generateToken((Users) authenticatiomanager.getPrincipal());
     }
 }

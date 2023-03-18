@@ -5,6 +5,7 @@ import com.pieropan.networksocial.dto.UsersDto;
 import com.pieropan.networksocial.repository.UsersRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +17,11 @@ public class UsersService {
     @Autowired
     ModelMapper modelMapper;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     public UsersDto save(UsersDto dto){
+        dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         Users user = modelMapper.map(dto, Users.class);
         return modelMapper.map(repository.save(user), UsersDto.class);
     }

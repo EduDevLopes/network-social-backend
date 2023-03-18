@@ -23,6 +23,6 @@ public class UsersController {
         UsersDto user = service.save(usersDto);
         var uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(service.save(usersDto));
+        return ResponseEntity.created(uri).body(user);
     }
 }

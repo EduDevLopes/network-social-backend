@@ -2,7 +2,6 @@ package com.pieropan.networksocial.service;
 
 import com.pieropan.networksocial.domain.Post;
 import com.pieropan.networksocial.dto.PostDto;
-import com.pieropan.networksocial.dto.UsersDto;
 import com.pieropan.networksocial.repository.PostRepostirory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -18,11 +18,11 @@ public class TokenService {
     @Value("${token.secret}")
     String secret;
 
-    public String generateToken(Users user) {
+    public String generateToken(Users users) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withSubject(user.getLogin())
+                    .withSubject(users.getLogin())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
         } catch (JWTCreationException exception) {

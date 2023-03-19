@@ -22,8 +22,11 @@ public class UsersService {
 
     public UsersDto save(UsersDto dto){
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
-        Users user = modelMapper.map(dto, Users.class);
-        return modelMapper.map(repository.save(user), UsersDto.class);
+        Users users = modelMapper.map(dto, Users.class);
+        return modelMapper.map(repository.save(users), UsersDto.class);
     }
 
+    public UsersDto findById(Long id) {
+        return modelMapper.map(repository.findById(id).get(), UsersDto.class);
+    }
 }

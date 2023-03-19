@@ -1,13 +1,14 @@
 package com.pieropan.networksocial.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Table(name = "users")
 public class Users implements UserDetails {
 
     @Id
@@ -29,8 +31,7 @@ public class Users implements UserDetails {
     private String password;
 
     @JsonIgnore
-    @OneToMany
-    @JoinColumn(name = "id_post")
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Post> posts;
 
     @Override

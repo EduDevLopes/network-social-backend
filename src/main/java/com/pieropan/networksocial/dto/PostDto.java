@@ -10,4 +10,5 @@ public class PostDto {
     private String title;
     private String description;
     private Date dateCreation;
+    private UsersDto users;
 }

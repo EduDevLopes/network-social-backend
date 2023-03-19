@@ -6,6 +6,7 @@ import com.pieropan.networksocial.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +27,12 @@ public class PostController {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @PostMapping
-    public ResponseEntity<PostDto> save(@RequestBody PostDto postDto, UriComponentsBuilder uriBuilder){
+    @PostMapping("/{idUser}")
+    public ResponseEntity<PostDto> save(@RequestBody PostDto postDto,
+                                        @PathVariable  Long idUser,
+                                        UriComponentsBuilder uriBuilder){
 
-        PostDto user = service.save(postDto);
+        PostDto user = service.save(postDto, idUser);
         var uri = uriBuilder.path("/post/{id}").buildAndExpand(postDto.getId()).toUri();
 
         return ResponseEntity.created(uri).body(user);

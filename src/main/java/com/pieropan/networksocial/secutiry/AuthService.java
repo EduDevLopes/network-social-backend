@@ -17,14 +17,14 @@ public class AuthService {
     @Autowired
     TokenService tokenService;
 
-    public LoginSucessDto login(UsersDto user) {
+    public LoginSucessDto login(UsersDto userDto) {
 
         var authenticatiomanager = manager.authenticate(new UsernamePasswordAuthenticationToken(
-                user.getLogin(), user.getPassword()));
+                userDto.getLogin(), userDto.getPassword()));
 
-        Users users = (Users) authenticatiomanager.getPrincipal();
-        String token = tokenService.generateToken(users);
+        Users user = (Users) authenticatiomanager.getPrincipal();
+        String token = tokenService.generateToken(user);
 
-        return new LoginSucessDto(token, users.getId());
+        return new LoginSucessDto(token, user.getId(), user.getName());
     }
 }

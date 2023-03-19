@@ -8,4 +8,5 @@ import lombok.Data;
 public class LoginSucessDto {
     private String token;
     private Long idUser;
+    private String nameUser;
 }

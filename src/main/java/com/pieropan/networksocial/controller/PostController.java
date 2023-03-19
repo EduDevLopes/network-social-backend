@@ -5,6 +5,7 @@ import com.pieropan.networksocial.dto.PostDto;
 import com.pieropan.networksocial.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +29,7 @@ public class PostController {
     }
 
     @PostMapping("/{idUser}")
-    public ResponseEntity<PostDto> save(@RequestBody PostDto postDto,
+    public ResponseEntity<PostDto> save(@RequestBody @Validated PostDto postDto,
                                         @PathVariable  Long idUser,
                                         UriComponentsBuilder uriBuilder){
 

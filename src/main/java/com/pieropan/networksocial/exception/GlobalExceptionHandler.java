@@ -1,5 +1,6 @@
 package com.pieropan.networksocial.exception;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -29,6 +30,13 @@ public class GlobalExceptionHandler {
         var erros = ex.getFieldErrors();
 
         return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity constraintViolationException(){
+
+        FieldError fieldError = new FieldError("login","login","Login já existe. Tente outro");
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new DadosErroValidacao(fieldError));
     }
 
     private record DadosErroValidacao(String campo, String mensagem) {

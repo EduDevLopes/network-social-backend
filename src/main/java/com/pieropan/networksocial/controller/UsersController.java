@@ -4,6 +4,7 @@ import com.pieropan.networksocial.dto.UsersDto;
 import com.pieropan.networksocial.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class UsersController {
     UsersService service;
 
     @PostMapping
-    public ResponseEntity<UsersDto> save(@RequestBody UsersDto usersDto, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<UsersDto> save(@RequestBody @Validated UsersDto usersDto, UriComponentsBuilder uriBuilder){
 
         UsersDto user = service.save(usersDto);
         var uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();

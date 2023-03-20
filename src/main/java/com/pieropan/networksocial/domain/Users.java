@@ -29,6 +29,7 @@ public class Users implements UserDetails {
     private String name;
     private String login;
     private String password;
+    private char gender;
 
     @JsonIgnore
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)

@@ -16,4 +16,5 @@ public class PostDto {
     private String description;
 
     private Date dateCreation;
+    private CategoryDto categoria;
 }

@@ -10,33 +10,35 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
 
     @Autowired
-    PostRepostirory repostitory;
+    PostRepostirory postRepository;
 
     @Autowired
     ModelMapper modelMapper;
 
     @Autowired
-    UsersRepository repository;
+    UsersRepository userRepository;
 
-    public List<Post> findAll() {
+    public List<PostDto> findAll() {
 
-        return repostitory.findAllByOrderByIdDesc();
+        return postRepository.findAllByOrderByIdDesc().stream().
+                map(p -> modelMapper.map(p, PostDto.class)).collect(Collectors.toList());
     }
 
     public PostDto save(PostDto postDto, Long idUser) {
         Post post = generatePost(postDto, idUser);
 
-        return modelMapper.map(repostitory.save(post), PostDto.class);
+        return modelMapper.map(postRepository.save(post), PostDto.class);
     }
 
     Post generatePost(PostDto postDto, Long idUser) {
         Post post = modelMapper.map(postDto, Post.class);
-        post.setUsers(repository.findById(idUser).get());
+        post.setUsers(userRepository.findById(idUser).get());
         post.setDateCreation(new Date());
 
         return post;

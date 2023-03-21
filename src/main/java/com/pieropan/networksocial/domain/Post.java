@@ -28,4 +28,9 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private Users users;
+
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "id_category")
+    private Category category;
 }

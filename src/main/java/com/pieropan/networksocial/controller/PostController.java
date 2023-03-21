@@ -1,6 +1,5 @@
 package com.pieropan.networksocial.controller;
 
-import com.pieropan.networksocial.domain.Post;
 import com.pieropan.networksocial.dto.PostDto;
 import com.pieropan.networksocial.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class PostController {
     PostService service;
 
     @GetMapping
-    public ResponseEntity<List<Post>> findAll() {
+    public ResponseEntity<List<PostDto>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 

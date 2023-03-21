@@ -28,7 +28,12 @@ public class PostController {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @PostMapping("/{idUser}")
+    @GetMapping("/{idUser}")
+    public ResponseEntity<List<PostDto>> findAllByUser(@PathVariable  Long idUser) {
+        return ResponseEntity.ok(service.findAllByUser(idUser));
+    }
+
+    @PostMapping("/user/{idUser}")
     public ResponseEntity<PostDto> save(@RequestBody @Validated PostDto postDto,
                                         @PathVariable  Long idUser,
                                         UriComponentsBuilder uriBuilder){

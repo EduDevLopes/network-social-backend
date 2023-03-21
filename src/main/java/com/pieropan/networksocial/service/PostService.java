@@ -6,6 +6,7 @@ import com.pieropan.networksocial.repository.PostRepostirory;
 import com.pieropan.networksocial.repository.UsersRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -27,6 +28,12 @@ public class PostService {
     public List<PostDto> findAll() {
 
         return postRepository.findAllByOrderByIdDesc().stream().
+                map(p -> modelMapper.map(p, PostDto.class)).collect(Collectors.toList());
+    }
+
+    public List<PostDto>  findAllByUser(Long idUser) {
+
+        return postRepository.findAllByUsersId(idUser, Sort.by(Sort.Direction.DESC, "id")).stream().
                 map(p -> modelMapper.map(p, PostDto.class)).collect(Collectors.toList());
     }
 

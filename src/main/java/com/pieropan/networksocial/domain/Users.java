@@ -34,10 +34,13 @@ public class Users implements UserDetails {
 
     private String password;
     private char gender;
+    private String email;
 
     @JsonIgnore
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Post> posts;
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -74,4 +77,15 @@ public class Users implements UserDetails {
         return true;
     }
 
+    public Users(String name, String login, String password, String email, char gender) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.gender = gender;
+    }
+
+    public Users() {
+
+    }
 }

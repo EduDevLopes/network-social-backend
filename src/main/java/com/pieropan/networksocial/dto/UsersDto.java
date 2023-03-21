@@ -18,4 +18,6 @@ public class UsersDto {
 
     @NotBlank(message = "É necessário selecionar o gênero!")
     private String gender;
+
+    private String email;
 }

@@ -12,4 +12,11 @@ public class Category {
     @Column(name = "id_category")
     private Long id;
     private String name;
+
+    public Category(String name) {
+        this.name = name;
+    }
+
+    public Category() {
+    }
 }

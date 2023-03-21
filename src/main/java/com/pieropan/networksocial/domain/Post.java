@@ -21,6 +21,7 @@ public class Post {
     @Column(name = "id_post")
     private Long id;
     private String title;
+    @Column(length = 5000)
     private String description;
     private Date dateCreation;
 
@@ -33,4 +34,16 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "id_category")
     private Category category;
+
+    public Post(String title, String description, Date dateCreation, Users users, Category category) {
+        this.title = title;
+        this.description = description;
+        this.dateCreation = dateCreation;
+        this.users = users;
+        this.category = category;
+    }
+
+    public Post() {
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.pieropan.networksocial.domain;
 
 import com.pieropan.networksocial.enums.CategoryEnum;
+import com.pieropan.networksocial.enums.ModalityEnum;
 import com.pieropan.networksocial.enums.SchoolingEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,12 +13,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Post {
 
     @Id
@@ -28,7 +31,7 @@ public class Post {
     @Column(length = 5000)
     private String description;
     private Date dateCreation;
-    private String modality;
+    private ModalityEnum modality;
 
     @ToString.Exclude
     @ManyToOne
@@ -37,18 +40,17 @@ public class Post {
 
     @Enumerated(EnumType.STRING)
     private CategoryEnum category;
+
+    @Enumerated(EnumType.STRING)
     private SchoolingEnum schooling;
 
-    public Post(String title, String description, Date dateCreation, String modality, Users users, CategoryEnum category) {
+    public Post(String title, String description, Date dateCreation, Users users,
+                CategoryEnum category, ModalityEnum modality) {
         this.title = title;
         this.description = description;
         this.dateCreation = dateCreation;
-        this.modality = modality;
         this.users = users;
         this.category = category;
-    }
-
-    public Post() {
-
+        this.modality = modality;
     }
 }

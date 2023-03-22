@@ -3,6 +3,7 @@ package com.pieropan.networksocial.config;
 import com.pieropan.networksocial.domain.Post;
 import com.pieropan.networksocial.domain.Users;
 import com.pieropan.networksocial.enums.CategoryEnum;
+import com.pieropan.networksocial.enums.ModalityEnum;
 import com.pieropan.networksocial.repository.PostRepostirory;
 import com.pieropan.networksocial.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,14 +50,13 @@ public class instanceDataBaseConfiguration {
                             • Interagir com a equipe de segurança para garantir a confiabilidade da plataforma.
                             • Criar ferramentas para garantir que os recursos estão sendo utilizados de forma consciente.
                             • Participar nas melhorias do processo de desenvolvimento técnico do time (DoJo, Pair, entre outras).
-                    """, new Date(),
-                    "PJ", userMatheus, CategoryEnum.TECNOLOGIA);
+                    """, new Date(), userMatheus, CategoryEnum.TECNOLOGIA, ModalityEnum.PJ);
 
             Post postServ = new Post("Auxiliar de Limpeza -  Trabalho presencial juiz de fora!", "Escolaridade mí\u00ADnima: Ensino Fundamental concluí\u00ADdo. Obrigatória experiência comprovada na área de limpeza. Ter boa comunicação e relação interpessoal. Disponibilidade para trabalhar em diferentes escalas, horários e postos.", new Date(),
-                    "CLT", userSamira, CategoryEnum.SERVIOS_GERAIS);
+                    userSamira, CategoryEnum.SERVIOS_GERAIS, ModalityEnum.CLT);
 
             Post postAdm = new Post("Estagiário em Administração", "Estagio para estudante de administração entre 4° e 8° período", new Date(),
-                    "CLT", userPedro, CategoryEnum.ADMINISTRACAO);
+                    userPedro, CategoryEnum.ADMINISTRACAO, ModalityEnum.CLT);
 
             postRepostirory.saveAll(Arrays.asList(postTech, postServ, postAdm));
         }

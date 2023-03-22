@@ -3,7 +3,8 @@ package com.pieropan.networksocial.dto;
 import lombok.Data;
 
 @Data
-public class CategoryDto {
+public class SchoolingDto {
+
     private Long id;
     private String name;
 

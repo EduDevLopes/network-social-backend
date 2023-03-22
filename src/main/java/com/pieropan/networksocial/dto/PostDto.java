@@ -1,7 +1,5 @@
 package com.pieropan.networksocial.dto;
 
-import com.pieropan.networksocial.enums.CategoryEnum;
-import com.pieropan.networksocial.enums.SchoolingEnum;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -18,8 +16,8 @@ public class PostDto {
     private String description;
 
     private Date dateCreation;
-    private CategoryEnum category;
-    private SchoolingEnum schooling;
     private UsersDto users;
+    private CategoryDto category;
+    private SchoolingDto schooling;
     private String modality;
 }

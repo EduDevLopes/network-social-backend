@@ -37,22 +37,18 @@ public class Post {
     @JoinColumn(name = "id_user")
     private Users users;
 
-    @Enumerated(EnumType.STRING)
-    private CategoryEnum category;
-
-    @Enumerated(EnumType.STRING)
-    private SchoolingEnum schooling;
-
-    @Enumerated(EnumType.STRING)
-    private ModalityEnum modality;
+    private String category;
+    private String schooling;
+    private String modality;
 
     public Post(String title, String description, Date dateCreation, Users users,
-                CategoryEnum category, ModalityEnum modality) {
+                String category, String schooling, String modality) {
         this.title = title;
         this.description = description;
         this.dateCreation = dateCreation;
         this.users = users;
         this.category = category;
+        this.schooling = schooling;
         this.modality = modality;
     }
 }

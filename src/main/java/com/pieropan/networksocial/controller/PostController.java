@@ -38,10 +38,10 @@ public class PostController {
                                         @PathVariable  Long idUser,
                                         UriComponentsBuilder uriBuilder){
 
-        PostDto user = service.save(postDto, idUser);
+        PostDto post = service.save(postDto, idUser);
         var uri = uriBuilder.path("/post/{id}").buildAndExpand(postDto.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(user);
+        return ResponseEntity.created(uri).body(post);
     }
 
     @DeleteMapping("/{id}")

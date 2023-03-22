@@ -17,7 +17,7 @@ public class PostDto {
 
     private Date dateCreation;
     private UsersDto users;
-    private CategoryDto category;
-    private SchoolingDto schooling;
+    private String category;
+    private String schooling;
     private String modality;
 }

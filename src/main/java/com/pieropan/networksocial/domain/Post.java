@@ -1,7 +1,11 @@
 package com.pieropan.networksocial.domain;
 
+import com.pieropan.networksocial.enums.CategoryEnum;
+import com.pieropan.networksocial.enums.SchoolingEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,22 +28,22 @@ public class Post {
     @Column(length = 5000)
     private String description;
     private Date dateCreation;
+    private String modality;
 
     @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "id_user")
     private Users users;
 
-    @ToString.Exclude
-    @ManyToOne
-    @JoinColumn(name = "id_category")
-    private Category category;
-    private String modality;
+    @Enumerated(EnumType.STRING)
+    private CategoryEnum category;
+    private SchoolingEnum schooling;
 
-    public Post(String title, String description, Date dateCreation, Users users, Category category) {
+    public Post(String title, String description, Date dateCreation, String modality, Users users, CategoryEnum category) {
         this.title = title;
         this.description = description;
         this.dateCreation = dateCreation;
+        this.modality = modality;
         this.users = users;
         this.category = category;
     }

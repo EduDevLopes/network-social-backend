@@ -34,6 +34,7 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "id_category")
     private Category category;
+    private String modality;
 
     public Post(String title, String description, Date dateCreation, Users users, Category category) {
         this.title = title;

@@ -31,7 +31,6 @@ public class Post {
     @Column(length = 5000)
     private String description;
     private Date dateCreation;
-    private ModalityEnum modality;
 
     @ToString.Exclude
     @ManyToOne
@@ -43,6 +42,9 @@ public class Post {
 
     @Enumerated(EnumType.STRING)
     private SchoolingEnum schooling;
+
+    @Enumerated(EnumType.STRING)
+    private ModalityEnum modality;
 
     public Post(String title, String description, Date dateCreation, Users users,
                 CategoryEnum category, ModalityEnum modality) {

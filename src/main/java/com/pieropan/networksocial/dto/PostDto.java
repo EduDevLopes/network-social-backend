@@ -1,5 +1,6 @@
 package com.pieropan.networksocial.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -17,7 +18,13 @@ public class PostDto {
 
     private Date dateCreation;
     private UsersDto users;
+
+    @NotBlank(message = "Categoria de preenchimento obrigatório!")
     private String category;
+
+    @NotBlank(message = "Escolaridade de preenchimento obrigatório!")
     private String schooling;
+
+    @NotBlank(message = "Modalidade de contratação de preenchimento obrigatório!")
     private String modality;
 }

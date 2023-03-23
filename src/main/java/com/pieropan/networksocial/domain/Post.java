@@ -1,12 +1,7 @@
 package com.pieropan.networksocial.domain;
 
-import com.pieropan.networksocial.enums.CategoryEnum;
-import com.pieropan.networksocial.enums.ModalityEnum;
-import com.pieropan.networksocial.enums.SchoolingEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,6 +10,8 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import java.util.Date;
 
@@ -37,18 +34,18 @@ public class Post {
     @JoinColumn(name = "id_user")
     private Users users;
 
-    private String category;
-    private String schooling;
-    private String modality;
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "id_complementary_data")
+    @Cascade(CascadeType.ALL)
+    private ComplementaryData complementaryData;
 
-    public Post(String title, String description, Date dateCreation, Users users,
-                String category, String schooling, String modality) {
+
+    public Post(String title, String description, Date dateCreation, Users users, ComplementaryData data) {
         this.title = title;
         this.description = description;
         this.dateCreation = dateCreation;
         this.users = users;
-        this.category = category;
-        this.schooling = schooling;
-        this.modality = modality;
+        this.complementaryData = data;
     }
 }

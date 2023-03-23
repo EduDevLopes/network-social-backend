@@ -3,7 +3,6 @@ package com.pieropan.networksocial.dto;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-
 import java.util.Date;
 
 @Data
@@ -27,4 +26,10 @@ public class PostDto {
 
     @NotBlank(message = "Modalidade de contratação de preenchimento obrigatório!")
     private String modality;
+
+    @NotBlank(message = "Nome da empresa de preenchimento obrigatório!")
+    private String company;
+
+    @NotBlank(message = "Localização de preenchimento obrigatório!")
+    private String location;
 }

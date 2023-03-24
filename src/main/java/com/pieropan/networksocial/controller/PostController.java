@@ -28,7 +28,12 @@ public class PostController {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping("/{idUser}")
+    @GetMapping("/{id}")
+    public ResponseEntity<PostDto> findById(@PathVariable  Long id) {
+        return ResponseEntity.ok(service.findById(id));
+    }
+
+    @GetMapping("/user/{idUser}")
     public ResponseEntity<List<PostDto>> findAllByUser(@PathVariable  Long idUser) {
         return ResponseEntity.ok(service.findAllByUser(idUser));
     }

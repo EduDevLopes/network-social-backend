@@ -31,6 +31,11 @@ public class PostService {
                 map(p -> modelMapper.map(p, PostDto.class)).collect(Collectors.toList());
     }
 
+    public PostDto findById(Long id) {
+
+        return  modelMapper.map(postRepository.findById(id), PostDto.class);
+    }
+
     public List<PostDto>  findAllByUser(Long idUser) {
 
         return postRepository.findAllByUsersId(idUser, Sort.by(Sort.Direction.DESC, "id")).stream().

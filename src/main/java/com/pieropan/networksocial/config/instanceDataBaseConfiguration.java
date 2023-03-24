@@ -53,17 +53,32 @@ public class instanceDataBaseConfiguration {
                             • Criar ferramentas para garantir que os recursos estão sendo utilizados de forma consciente.
                             • Participar nas melhorias do processo de desenvolvimento técnico do time (DoJo, Pair, entre outras).
                     """, new Date(), userMatheus, new ComplementaryData(CategoryEnum.TECNOLOGIA.getName(),
-                    SchoolingEnum.ENSINO_SUPERIOR_COMPLETO.getName(), ModalityEnum.PJ.name(), "Empresa XPTO", "Remoto"));
-
+                    SchoolingEnum.ENSINO_SUPERIOR_COMPLETO.getName(), ModalityEnum.PJ.name(), "Empresa XPTO", "Remoto", "Remoto",
+                    """
+                            Salário CLT Full;
+                            Vale Refeição ou Alimentação (Alelo);
+                            Vale Transporte (sempre que houver o deslocamento);
+                            Auxílio Home Office (proporcional aos dias em que atuará nesta modalidade);
+                            Assistência Médica Sulamérica;
+                            Assistência Odontológica Sulamérica;
+                            Seguro de Vida;
+                            Parcerias (Curso de idiomas, ensino, livraria, restaurante, entre outras);
+                            Gympass;
+                            Allya;
+                            Day Off;
+                            Premiação por indicações;
+                            Inside Out (Ocorre todas as sextas-feiras. Evento da galera voltado para troca de conhecimento);
+                            Oportunidade de crescimento profissional.
+                            """));
 
             Post postServ = new Post("Auxiliar de Limpeza -  Trabalho presencial juiz de fora!", """
                     Ensino médio completo; Experiência com serviços de limpeza e higienização, preferencialmente em ambientes públicos;
                     """, new Date(), userSamira, new ComplementaryData(CategoryEnum.SERVIOS_GERAIS.getName(),
-                    SchoolingEnum.ENSINO_MEDIO_COMPLETO.getName(), ModalityEnum.CLT.name(), "Empresa ABCD", "São Paulo"));
+                    SchoolingEnum.ENSINO_MEDIO_COMPLETO.getName(), ModalityEnum.CLT.name(), "Empresa ABCD", "São Paulo", "", ""));
 
             Post postAdm = new Post("Estagiário em Administração", "Estagio para estudante de administração entre 4° e 8° período", new Date(),
                     userPedro, new ComplementaryData(CategoryEnum.ADMINISTRACAO.getName(),
-                    SchoolingEnum.ENSINO_SUPERIOR_COMPLETO.getName(), ModalityEnum.CLT.name(), "Empresa um dois três", "Rio de janeiro!"));
+                    SchoolingEnum.ENSINO_SUPERIOR_COMPLETO.getName(), ModalityEnum.CLT.name(), "Empresa um dois três", "Rio de janeiro!", "", ""));
 
             postRepostirory.saveAll(Arrays.asList(postTech, postServ, postAdm));
         }

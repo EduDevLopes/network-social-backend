@@ -24,12 +24,21 @@ public class ComplementaryData {
 
     private String location;
 
-    public ComplementaryData(String category, String schooling, String modality, String company, String location) {
+    @Column(columnDefinition="TEXT")
+    private String requirements;
+
+    @Column(columnDefinition="TEXT")
+    private String benefits;
+
+    public ComplementaryData(String category, String schooling, String modality,
+                             String company, String location, String requirements, String benefits) {
         this.category = category;
         this.schooling = schooling;
         this.modality = modality;
         this.company = company;
         this.location = location;
+        this.requirements = requirements;
+        this.benefits = benefits;
     }
 
     public ComplementaryData() {}

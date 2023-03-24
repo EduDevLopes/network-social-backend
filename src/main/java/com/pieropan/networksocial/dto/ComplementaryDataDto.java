@@ -19,4 +19,8 @@ public class ComplementaryDataDto {
 
     @NotBlank(message = "Localização de preenchimento obrigatório!")
     private String location;
+
+    private String requirements;
+
+    private String benefits;
 }

@@ -1,5 +1,6 @@
 package com.pieropan.networksocial.exception;
 
+import feign.FeignException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,12 @@ public class GlobalExceptionHandler {
 
         FieldError fieldError = new FieldError("login","login","Login já existe. Tente outro");
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new DadosErroValidacao(fieldError));
+    }
+
+    @ExceptionHandler(FeignException.Forbidden.class)
+    public ResponseEntity feignExceptionForbidden(){
+        // implementar mensageria
+        return ResponseEntity.ok().build();
     }
 
     private record DadosErroValidacao(String campo, String mensagem) {

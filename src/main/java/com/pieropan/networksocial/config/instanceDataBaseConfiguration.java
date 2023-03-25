@@ -32,13 +32,13 @@ public class instanceDataBaseConfiguration {
     public void instanceDataBase() {
         if (userRepository.findAll().isEmpty()) {
             Users userMatheus = new Users("Matheus Pieropan", "matheuspieropan",
-                    passwordEncoder.encode("123"), "matheus.2015jf@hotmail.com", 'M');
+                    passwordEncoder.encode("123"), "matheus.2015jf@hotmail.com", 'M', false);
 
             Users userSamira = new Users("Samira Pieropan", "samirapieropan",
-                    passwordEncoder.encode("123"), "samiliralira@gmail.com", 'F');
+                    passwordEncoder.encode("123"), "samiliralira@gmail.com", 'F', false);
 
             Users userPedro = new Users("Pedro Rocha", "pedrorocha",
-                    passwordEncoder.encode("123"), "pedrorocha@hotmail.com", 'M');
+                    passwordEncoder.encode("123"), "pedrorocha@hotmail.com", 'M',false);
 
             userRepository.saveAll(Arrays.asList(userMatheus, userSamira, userPedro));
 

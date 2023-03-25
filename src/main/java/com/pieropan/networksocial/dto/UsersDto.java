@@ -20,4 +20,5 @@ public class UsersDto {
     private String gender;
 
     private String email;
+    private boolean iscandidate;
 }

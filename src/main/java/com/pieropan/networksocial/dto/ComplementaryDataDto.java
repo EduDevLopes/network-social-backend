@@ -5,22 +5,24 @@ import lombok.Data;
 
 @Data
 public class ComplementaryDataDto {
-    @NotBlank(message = "Categoria de preenchimento obrigatório!")
+    @NotBlank(message = "Campo Categoria de preenchimento obrigatório!")
     private String category;
 
-    @NotBlank(message = "Escolaridade de preenchimento obrigatório!")
+    @NotBlank(message = "Campo Escolaridade de preenchimento obrigatório!")
     private String schooling;
 
-    @NotBlank(message = "Modalidade de contratação de preenchimento obrigatório!")
+    @NotBlank(message = "Campo Modalidade de contratação de preenchimento obrigatório!")
     private String modality;
 
-    @NotBlank(message = "Nome da empresa de preenchimento obrigatório!")
+    @NotBlank(message = "Campo Nome da empresa de preenchimento obrigatório!")
     private String company;
 
-    @NotBlank(message = "Localização de preenchimento obrigatório!")
+    @NotBlank(message = "Campo Localização de preenchimento obrigatório!")
     private String location;
 
+    @NotBlank(message = "Campo Localização de preenchimento obrigatório!")
     private String requirements;
 
+    @NotBlank(message = "Campo Benefícios de preenchimento obrigatório!")
     private String benefits;
 }

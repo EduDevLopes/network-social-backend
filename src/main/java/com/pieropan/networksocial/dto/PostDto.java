@@ -1,7 +1,9 @@
 package com.pieropan.networksocial.dto;
 
+import jakarta.validation.Valid;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+
 import java.util.Date;
 
 @Data
@@ -16,5 +18,7 @@ public class PostDto {
 
     private Date dateCreation;
     private UsersDto users;
+
+    @Valid
     private ComplementaryDataDto complementaryData;
 }

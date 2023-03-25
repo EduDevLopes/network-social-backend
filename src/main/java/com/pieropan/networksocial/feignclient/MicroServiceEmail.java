@@ -1,4 +1,4 @@
-package com.pieropan.networksocial.http;
+package com.pieropan.networksocial.feignclient;
 
 import com.pieropan.networksocial.dto.EmailDto;
 import org.springframework.cloud.openfeign.FeignClient;

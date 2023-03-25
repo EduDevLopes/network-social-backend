@@ -3,7 +3,7 @@ package com.pieropan.networksocial.service;
 import com.pieropan.networksocial.domain.Users;
 import com.pieropan.networksocial.dto.EmailDto;
 import com.pieropan.networksocial.dto.UsersDto;
-import com.pieropan.networksocial.http.MicroServiceEmail;
+import com.pieropan.networksocial.feignclient.MicroServiceEmail;
 import com.pieropan.networksocial.repository.UsersRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -32,6 +32,7 @@ public class AuthConfiguration {
                 .requestMatchers(HttpMethod.GET, "/post").permitAll()
                 .requestMatchers(HttpMethod.GET, "/post/{id}").permitAll()
                 .requestMatchers(HttpMethod.GET, "/category").permitAll()
+                .requestMatchers(HttpMethod.GET, "/schooling").permitAll()
                 .requestMatchers(HttpMethod.POST, "/user").permitAll()
                 .anyRequest().authenticated()
                 .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

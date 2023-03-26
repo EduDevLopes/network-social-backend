@@ -2,6 +2,7 @@ package com.pieropan.networksocial.service;
 
 import com.pieropan.networksocial.domain.Post;
 import com.pieropan.networksocial.dto.EmailDto;
+import com.pieropan.networksocial.dto.UsersDto;
 import com.pieropan.networksocial.feignclient.MicroServiceEmail;
 import com.pieropan.networksocial.repository.PostRepostirory;
 import com.pieropan.networksocial.repository.UsersRepository;
@@ -36,5 +37,9 @@ public class EmailService {
                 append("Entrar em contato: ").append(emailCandidate);
 
         microServiceEmail.send(new EmailDto(emailFrom, emailTo, subject, sb.toString()));
+    }
+
+    public void sendWelcome(UsersDto usersDto){
+        microServiceEmail.send(EmailDto.buildEmailDto(usersDto));
     }
 }

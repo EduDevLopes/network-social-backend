@@ -1,9 +1,7 @@
 package com.pieropan.networksocial.service;
 
 import com.pieropan.networksocial.domain.Users;
-import com.pieropan.networksocial.dto.EmailDto;
 import com.pieropan.networksocial.dto.UsersDto;
-import com.pieropan.networksocial.feignclient.MicroServiceEmail;
 import com.pieropan.networksocial.repository.UsersRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +18,18 @@ public class UsersService {
     ModelMapper modelMapper;
 
     @Autowired
-    MicroServiceEmail microServiceEmail;
+    EmailService emailService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public UsersDto save(UsersDto dto){
-        dto.setPassword(passwordEncoder.encode(dto.getPassword()));
-        Users users = modelMapper.map(dto, Users.class);
-        users = repository.save(users);
+    public UsersDto save(UsersDto userDto){
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        Users user = modelMapper.map(userDto, Users.class);
+        user = repository.save(user);
 
-        microServiceEmail.send(EmailDto.buildEmailDto(dto));
-        return modelMapper.map(users, UsersDto.class);
+        emailService.sendWelcome(userDto);
+        return modelMapper.map(user, UsersDto.class);
     }
 
     public UsersDto findById(Long id) {

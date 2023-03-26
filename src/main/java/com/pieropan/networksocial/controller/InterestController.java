@@ -15,9 +15,9 @@ public class InterestController {
     @Autowired
     InterestService interestService;
     @GetMapping("/{idPost}/{idUser}")
-    public ResponseEntity interestPost(@PathVariable Long idPost, @PathVariable Long idUser) {
+    public ResponseEntity interestCandidate(@PathVariable Long idPost, @PathVariable Long idUser) {
 
-        interestService.interestPost(idPost, idUser);
+        interestService.interestCandidate(idPost, idUser);
         return ResponseEntity.ok().build();
     }
 }

@@ -40,7 +40,7 @@ public class Users implements UserDetails {
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Post> posts;
 
-    private boolean iscandidate;
+    private boolean candidate;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -78,13 +78,13 @@ public class Users implements UserDetails {
     }
 
     public Users(String name, String login, String password,
-                 String email, char gender, boolean iscandidate) {
+                 String email, char gender, boolean candidate) {
         this.name = name;
         this.login = login;
         this.password = password;
         this.email = email;
         this.gender = gender;
-        this.iscandidate = iscandidate;
+        this.candidate = candidate;
     }
 
     public Users() {

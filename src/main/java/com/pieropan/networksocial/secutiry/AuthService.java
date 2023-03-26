@@ -25,6 +25,6 @@ public class AuthService {
         Users user = (Users) authenticatiomanager.getPrincipal();
         String token = tokenService.generateToken(user);
 
-        return new LoginSucessDto(token, user.getId(), user.getName(), user.getGender());
+        return new LoginSucessDto(token, user.getId(), user.getName(), user.getGender(), user.isCandidate());
     }
 }

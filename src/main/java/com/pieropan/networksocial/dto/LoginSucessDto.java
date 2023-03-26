@@ -10,4 +10,5 @@ public class LoginSucessDto {
     private Long idUser;
     private String nameUser;
     private char gender;
+    private boolean iscandidate;
 }

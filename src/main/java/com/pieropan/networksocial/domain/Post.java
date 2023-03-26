@@ -24,8 +24,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_post")
     private Long id;
+
     private String title;
     @Column(length = 5000)
+
     private String description;
     private Date dateCreation;
 

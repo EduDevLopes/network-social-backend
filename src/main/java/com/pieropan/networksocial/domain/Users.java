@@ -10,14 +10,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class Users implements UserDetails {
@@ -39,6 +40,9 @@ public class Users implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Post> posts;
+
+    @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
+    private List<Interest> interests;
 
     private boolean candidate;
 
@@ -85,9 +89,5 @@ public class Users implements UserDetails {
         this.email = email;
         this.gender = gender;
         this.candidate = candidate;
-    }
-
-    public Users() {
-
     }
 }

@@ -7,13 +7,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -42,6 +44,8 @@ public class Post {
     @Cascade(CascadeType.ALL)
     private ComplementaryData complementaryData;
 
+    @OneToMany(mappedBy = "idPost")
+    private List<Interest> interests;
 
     public Post(String title, String description, Date dateCreation, Users users, ComplementaryData data) {
         this.title = title;
@@ -49,5 +53,10 @@ public class Post {
         this.dateCreation = dateCreation;
         this.users = users;
         this.complementaryData = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" + "id=" + id + '}';
     }
 }

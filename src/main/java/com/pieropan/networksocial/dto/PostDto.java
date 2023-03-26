@@ -1,10 +1,12 @@
 package com.pieropan.networksocial.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.validation.Valid;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class PostDto {
@@ -21,4 +23,5 @@ public class PostDto {
 
     @Valid
     private ComplementaryDataDto complementaryData;
+    private List<InterestDto> interests;
 }

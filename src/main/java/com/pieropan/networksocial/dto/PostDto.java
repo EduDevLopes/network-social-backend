@@ -12,7 +12,7 @@ import java.util.List;
 public class PostDto {
     private Long id;
 
-    @Length(min = 10, max = 80, message = "Campo título deve possuir entre 10 a 80 caracteres.")
+    @Length(min = 10, max = 38, message = "Campo título deve possuir entre 10 e 38 caracteres.")
     private String title;
 
     @Length(min = 50, max = 255, message = "Campo descrição deve possuir entre 50 a 255 caracteres.")

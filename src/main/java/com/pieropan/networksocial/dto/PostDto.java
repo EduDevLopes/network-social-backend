@@ -1,6 +1,5 @@
 package com.pieropan.networksocial.dto;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.validation.Valid;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
